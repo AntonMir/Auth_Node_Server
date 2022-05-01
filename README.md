@@ -12,5 +12,5 @@
 5) Go to server directory ./auth_test/client
 - ###### `npm i`
 - ###### `npm run dev`
-######Client will be started on [http://localhost:3000](http://localhost:3000)
+###### Client will be started on [http://localhost:3000](http://localhost:3000)
 
