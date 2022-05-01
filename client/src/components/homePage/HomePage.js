@@ -39,7 +39,8 @@ export default function HomePage() {
 
                 setUserList(data)
             } catch (error) {
-                // оповещение о времени жизни токена оставил специально для наглядности
+                // если вылезет какая-то другая ошибка, 
+                // ее обработка произойдет в hooks/http.hook.js
                 const tokens = await request({
                     url: `${config.authServerUrl}/api/user/refresh`,
                     method: 'POST',
