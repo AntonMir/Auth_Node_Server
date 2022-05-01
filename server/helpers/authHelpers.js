@@ -10,7 +10,7 @@ function generateAccessToken(userId) {
         type: 'access'
     }
     const secret = process.env.SECRET_KEY
-    const expires = { expiresIn: '1m' }
+    const expires = { expiresIn: '1s' }
 
     return jwt.sign(payload, secret, expires)
 }

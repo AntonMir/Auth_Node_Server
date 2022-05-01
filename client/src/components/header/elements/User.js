@@ -14,7 +14,7 @@ export default function User() {
     const auth = useContext(AuthContext);
 
     return (
-        <CustomLink to="auth">
+        <CustomLink to="/">
             <ImgStyled src={user} alt="user" />
             <UserName>
                 {auth.userName ? auth.userName.toUpperCase() : ''}

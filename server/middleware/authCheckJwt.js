@@ -30,7 +30,7 @@ module.exports = function (req, res, next) {
 
     } catch (error) {
         if (error instanceof jwt.TokenExpiredError) {
-            return res.status(400).json({ message: 'Время жизни Access токена истекло' })
+            return res.status(401).json({ message: 'Время жизни Access токена истекло' })
         } else if (error instanceof jwt.JsonWebTokenError) {
             return res.status(400).json({ message: 'Невалидный Access токен!' })
         }
