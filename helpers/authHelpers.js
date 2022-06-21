@@ -39,8 +39,8 @@ const updateTokens = (userId) => {
 
     return replaceDbRefreshToken(refreshToken.id, userId)
         .then(() => ({
-            accessToken,
-            refreshToken: refreshToken.token
+            access_token: accessToken,
+            refresh_token: refreshToken.token
         }))
 }
 

@@ -13,11 +13,12 @@ class AuthController {
 
     // регистрация
     async signup(req, res) {
+        console.log('Долетело!!!')
         const { name, email, password } = req.body
 
+        if (!name) return res.status(400).json({ message: 'Укажите имя пользователя' })
         if (!email) return res.status(400).json({ message: 'Введите email' })
         if (!password) return res.status(400).json({ message: 'Введите пароль' })
-        if (!name) return res.status(400).json({ message: 'Укажите имя пользователя' })
 
         const candidate = await User.findOne({ where: { email } })
 
@@ -29,18 +30,19 @@ class AuthController {
         const hashPassword = await bcrypt.hash(password, 4)
 
         // создаем нового пользователя
-        const user = await User.create({ email, password: hashPassword, name })
+        const user = await User.create({ name, email, password: hashPassword })
 
         // генерим ему токены
-        const newTokens = await updateTokens(user.id)
+        // const newTokens = await updateTokens(user.id)
 
         // после регистрации отдаем токены на клиент
-        return res.status(201).json({ 
-            tokens: newTokens, 
-            email: user.email, 
-            name: user.name, 
-            message: "Пользователь успешно зарегистрирован" 
-        }) 
+        return res.status(201).json({message: "Пользователь успешно зарегистрирован"}) 
+        // return res.status(201).json({ 
+        //     tokens: newTokens, 
+        //     email: user.email, 
+        //     name: user.name, 
+        //     message: "Пользователь успешно зарегистрирован" 
+        // }) 
     }
 
 
@@ -65,8 +67,7 @@ class AuthController {
         // после регистрации отдаем токены на клиент
         return res.status(201).json({ 
             tokens: newTokens,
-            email: user.email, 
-            name: user.name, 
+            name: user.name,
         }) 
     }
 
