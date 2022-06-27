@@ -13,7 +13,7 @@ class AuthController {
 
     // регистрация
     async signup(req, res) {
-        console.log('Долетело!!!')
+
         const { name, email, password } = req.body
 
         if (!name) return res.status(400).json({ message: 'Укажите имя пользователя' })
@@ -47,7 +47,8 @@ class AuthController {
 
 
     // вход
-    async login(req, res) {
+    async login(req, res) {   
+
         const { email, password } = req.body
 
         if (!email) return res.status(400).json({ message: 'Введите email' })

@@ -5,6 +5,7 @@ const sequelize = require('@root/db.js')
 const models = require('@models/index.js')
 const cors = require('cors')
 const routes = require('@routes/index.js')
+const logger = require('@utils/customLogger.js')
 
 const app = express()
 const PORT = process.env.PORT
@@ -20,6 +21,8 @@ app.use(
     })
 )
 app.use(express.json())
+
+app.use('/', logger)
 
 app.use('/api', routes)
 
